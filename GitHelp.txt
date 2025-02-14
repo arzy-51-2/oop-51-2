@@ -75,3 +75,8 @@ git credential reject <<EOF
 protocol=https
 host=github.com
 EOF
+
+
+Команды для удаление настроек
+git config --global --unset user.name
+git config --global --unset user.email
