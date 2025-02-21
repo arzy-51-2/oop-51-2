@@ -57,3 +57,11 @@ client = BankAccount("John Doe", 1000, 123456)
 print(type(client))
 # print(client._BankAccount__password)
 # client.about()
+
+
+a = "foot"
+b = "foot"
+
+def test():
+    t = "123"
+    pass

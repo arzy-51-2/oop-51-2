@@ -8,6 +8,7 @@ cursor = connect.cursor()
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS users(
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
         name VARCHAR (40) NOT NULL,
         age INTEGER NOT NULL,
         hobby TEXT
@@ -19,7 +20,7 @@ cursor.execute('''
 connect.commit()
 
 
-# CRUD - Create - Reate - Update - Delete
+# CRUD - Create - Read - Update - Delete
 
 
 
@@ -37,7 +38,11 @@ def add_user(name, age, hobby):
 # age = input("Введите возраст")
 # hobby = input("Введите Хоби")
 
-add_user("ardager", 23, "плавать")
+# add_user("user1", 23, "плавать")
+# add_user("user2", 23, "плавать")
+# add_user("user3", 23, "плавать")
+# add_user("user4", 23, "плавать")
+# add_user("user5", 23, "плавать")
 
 
 def get_all_users():
@@ -52,7 +57,47 @@ def get_all_users():
         
         
         
-get_all_users()
+# get_all_users()
 
-def get_users_by_name():
+
+def get_user_by_name(name):
+    cursor.execute(
+        'SELECT * FROM users WHERE name = ?',
+        (name,)
+    )
+    user = cursor.fetchall()
     
+    print(user)
+    
+    
+# get_user_by_name('TEST_2')
+
+
+# Update
+
+
+def update_user(new_name, user_id):
+    
+    cursor.execute(
+        'UPDATE users SET name = ? WHERE id = ?',
+        (new_name, user_id)
+    )
+    connect.commit()
+    print("User Updated!!")
+    
+# update_user(user_id=5, new_name="TEST_2")
+
+# Delete
+def delete_user(row_id):
+    cursor.execute(
+        'DELETE from users WHERE rowid = ?',
+        (row_id,)
+    )
+    connect.commit()
+    print('User Deleted!!')
+    
+# delete_user(3)
+
+
+
+
